@@ -1,0 +1,74 @@
+import org.junit.*;
+import static org.junit.Assert.*;
+
+public class JUnitTiming {
+    
+    @Before
+    public void setup() {
+        System.out.println("in @Before");
+    }
+    
+    @After
+    public void cleanup() {
+        System.out.println("in @After");
+    }
+    
+    @Test
+    public void test1() {
+        System.out.println("in @Test, test1");
+        assertEquals("using assertEquals", 5, 5);
+    }
+    
+    @Test
+    public void test2() {
+        System.out.println("in @Test, test2");
+        assertEquals("using assertEquals", 2.0, 2.0005, 0.002);
+        assertEquals("using assertEquals", 2.0, 2.0005, 0.0002);
+    }
+    
+    @Test
+    public void test3() {
+        System.out.println("in @Test, test3");
+        assertNotNull("check for instance", "hello");
+    }
+    
+    @Test
+    public void test4() {
+        System.out.println("in @Test, test4");
+        fail("to see what happens");
+    }
+    
+    @Test
+    public void test5() {
+        System.out.println("in @Test, test5");
+        // added in 4.11
+        assertNotEquals("using assertNotEquals", 2.0, 2.0005, 0.0002);
+    }
+    
+//*
+    public static void main(String[] args) {
+        org.junit.runner.Result res;
+        java.io.PrintStream out = System.out;
+        res = org.junit.runner.JUnitCore.runClasses(JUnitTiming.class);
+        out.printf("%d tests in %.3f sec\n", res.getRunCount(), res.getRunTime()/1000.0);
+        if(res.wasSuccessful()) {
+            out.println("Success");
+        } else {
+            out.println("FAILURE: " + res.getFailureCount() + " failures");
+            int i = 0;
+            for(org.junit.runner.notification.Failure fail : res.getFailures()) {
+                out.println("  " + ++i + ") " + fail.getTestHeader() + ": " +
+                            fail.getMessage());
+            }
+        }
+        out.println();
+    }
+//*/
+    
+/*/
+    public static void main(String[] args) {
+        org.junit.runner.JUnitCore.main(new String[] {"JUnitTiming"});
+    }
+//*/
+    
+}

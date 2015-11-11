@@ -1,0 +1,20 @@
+import java.util.Hashmap;
+
+public class Hashy{
+  
+
+HashMap<String, color> colors;
+
+colors = new HashMap<String,Color>();
+
+colors.put("red", new Color(204,0,0));
+
+colors.put("brown", new Color(153,102,0));
+
+colors.put("purple", new Color(160,0,160));
+
+Color treeTrunk = colors.get("brown");
+System.out.println(treeTrunk);
+
+Color ocean = colors.get("blue");
+System.out.println(ocean);

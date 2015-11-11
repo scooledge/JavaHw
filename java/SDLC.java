@@ -1,0 +1,26 @@
+
+
+public class MyArray{
+
+  public static void main(String[] args){
+int[] numbers = new int[5]; 
+
+System.out.println( "initial: " + numbers[2] ); 
+
+int i = 0; 
+while( i < numbers.length ) {
+  numbers[i] = (int)( Math.pow( 2, i ) ); 
+  i++ ;
+}
+
+numbers[0] = 200; 
+
+i = 0; 
+while( i < numbers.length ) {
+  System.out.println( numbers[i] ); 
+  i++ ; 
+}
+  }
+}
+
+

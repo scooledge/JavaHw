@@ -1,0 +1,73 @@
+
+import java.util.*;
+
+/**
+ * This is the starting point code for Lab: Reindeer.
+ */
+public class Reindeer {
+
+  // The reindeer
+  private java.util.ArrayList reindeer;
+  
+  private String names;
+  
+  public Reindeer() {
+    
+    reindeer = new java.util.ArrayList<String>();
+    
+    
+  }
+  /**
+   * Constructor, which you will write
+   */
+ 
+  /**
+   * Add the names of the reindeer to the collection.
+   */
+  public void addReindeer() {
+   add("Dasher");
+   add("Dancer");
+  add("Prancer");
+   add("Vixen");
+  add("Comet");
+   add("Cupid");
+    add("Dunder");
+    add("Blixem");
+  }
+  
+  /**
+   * A simple method to print out the contents of
+   * the collection
+   */
+  
+  
+   public void add(String names) {
+     reindeer.add(names);
+  }
+  
+  public void print() {
+    for(Object o : reindeer) {
+      System.out.print(o + " ");
+    }
+    System.out.println();
+  }
+  
+  /**
+   * The application method, which you will write
+   * @param args Command-line arguments
+   */
+  
+  public static void main(String[] args){
+    
+    Reindeer santa = new Reindeer();
+    
+    santa.addReindeer();
+    santa.print();
+    
+    
+  }
+    
+    
+  
+  
+}

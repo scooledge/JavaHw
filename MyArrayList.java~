@@ -1,0 +1,47 @@
+import java.util.ArrayList;
+
+public class MyArrayList {
+  
+   ArrayList<String> list ;
+  
+  public MyArrayList() {
+    
+    list = new ArrayList<String>();
+  }
+  
+  public  void aDD(){
+    
+    list.add("yolo");
+    list.add("testing");
+    list.add("a second test");
+ 
+  }
+  
+  public  void showStringList() { 
+  System.out.println("Contents of the list:"); 
+  for(int i = 0; i < list.size(); i++) 
+    System.out.println("\"" + list.get(i) + "\""); 
+}
+  
+  public int countAllCharacters() { 
+  int total = 0; 
+  for(int i = 0; i < list.size(); i++) { 
+    String s = list.get(i); 
+    total += s.length( ); 
+    
+  } 
+  return total; 
+  
+  }
+  
+  
+  
+  public static void main(String[] args){
+  
+    
+    MyArrayList listing = new MyArrayList();
+    listing.aDD();
+    listing.showStringList();
+    System.out.println(listing.countAllCharacters());
+}
+}

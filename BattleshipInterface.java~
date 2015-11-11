@@ -1,0 +1,88 @@
+/**
+ * The programatic interface for the Battleship Model class.
+ * This interface supports communication with both the view
+ * and controller classes in the Battleship application.
+ * 
+ * @author Sam Cooledge
+ * @author Molly Allen
+ * @author Kellan Nealy
+ */
+
+//The order for the following methods is subject to  peer review and change
+
+public interface BattleshipInterface {
+  
+   /**
+  * Makes a shot during Play Mode.
+  * @param loc The designator for the shot
+  * @return The status of the shot. See the shotStatus constants
+  * @throws IllegalStateException The game is not in Play Mode
+  */
+ public shotStatus makeShot(Location loc);
+
+ //Other methods to be supported and JavaDoc'd
+ public void NewGame();
+ public Mode getGameMode();
+ public TurnStatus getTurnStatus();
+ //using the same Location class Dan defined
+ public void placeShip(Location loc, Mode mode);
+ //views are going to need to see offensive and defensive grids
+ public String getOffensiveGrid(TurnStatus curPlayer);
+ public String getDefensiveGrid(TurnStatus curPlayer);
+ 
+ //----- separate top-level declarations
+
+ /**
+  * A helper class for location
+  */
+ class Location {
+    /**
+  * The row
+  */
+    char row;
+    /**
+  * The column
+  */
+    int col;
+ }
+
+ /**
+  * Helper enumerated type for return status. The SUNK_XXX
+  * values indicate HIT. The current player's turn continues
+  * until the return status is MISS.
+  */
+ enum shotStatus {
+  // return status, miss
+  MISS, 
+  // return status, hit, doesn't sink a ship
+  HIT, 
+  // return status, hit, sunk destroyer 
+  SUNK_DESTROYER, 
+  // return status, hit, sunk cruiser
+  SUNK_CRUISER, 
+  // return status, hit, sunk battleship
+  SUNK_BATTLESHIP, 
+  // return status, hit, sunk aircraft carrier
+  SUNK_AIRCRAFT_CARRIER, 
+  // return status, location was already played or invalid
+  DO_OVER
+ };
+ 
+ enum Mode {
+  // return mode, players setting up defensive grids
+  // players do not access to their offensive grids in this mode
+  SETUP, 
+  // return mode, players taking shots on each others' defensive grids
+  // players modifying their offensive grids
+  PLAY 
+ };
+ 
+ enum TurnStatus {
+  // return turnStatus, it is player A's turn
+  // can only access player A's defensive and offensive grid
+  PLAYER_A, 
+  // return turnStatus, it is player B's turn
+  // can only access player B's defensive and offensive grid
+  PLAYER_B 
+ };
+}
